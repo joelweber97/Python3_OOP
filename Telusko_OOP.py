@@ -41,7 +41,8 @@ print(comp1)
 comp2 = Computer('Ryzen 3', 8)
 
 print(comp2.cpu)
-
+print(id(comp1))
+print(id(comp2))
 
 comp1.config()
 comp2.config()
