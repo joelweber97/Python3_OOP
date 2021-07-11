@@ -81,3 +81,47 @@ if comp1.compare(comp2):
     print('they are the same')
 else:
     print('they are different')
+    
+    
+    
+#2 different types of variables. instance variable and class variable
+class Car:
+    
+    #if we define a variable outside init it becomes a class variable
+    wheels = 4
+    #wheels variable is not specific to individual instances of an object.
+    #wheels is common among all instances (i.e. the entire class)
+    
+    def __init__(self):
+        self.mileage = 10
+        self.company = 'BMW'
+        #mileage and company are both instance variables
+        #as the car (object) changes these values also change.
+        #instance variables are defined inside init
+        
+    
+
+
+car1 = Car()
+car2 = Car()
+
+print(car1.company, car1.mileage)
+print(car2.company, car2.mileage)
+
+#here we are changing this instance variable for car1
+car1.mileage = 8
+print(car1.company, car1.mileage, car1.wheels)
+print(car2.company, car2.mileage, car2.wheels)
+
+#instance variables are different for different objects.
+#if we change the variable for one object it won't affect the variable for a different object.
+
+
+
+#we can actually change the class variable as well, but it needs to be called on the class
+Car.wheels = 5
+print(car1.company, car1.mileage, car1.wheels)
+print(car2.company, car2.mileage, car2.wheels)
+#now all the car objects have changed to have 5 wheels.
+
+
