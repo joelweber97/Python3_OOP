@@ -99,8 +99,6 @@ class Car:
         #as the car (object) changes these values also change.
         #instance variables are defined inside init
         
-    
-
 
 car1 = Car()
 car2 = Car()
@@ -123,5 +121,51 @@ Car.wheels = 5
 print(car1.company, car1.mileage, car1.wheels)
 print(car2.company, car2.mileage, car2.wheels)
 #now all the car objects have changed to have 5 wheels.
+
+
+
+''' 3 types of methods
+    instance methods - 
+    class methods - 
+    static methods - 
+    '''
+
+class Student:
+    #static variable
+    school = 'Telusko'
+
+    #instance variable
+    def __init__(self, m1, m2, m3):
+        self.m1 = m1
+        self.m2 = m2
+        self.m3 = m3
+
+
+    def average(self):
+        return (self.m1 + self.m2 + self.m3)/3
+
+
+s1 = Student(34, 67, 32)
+s2 = Student(89, 32, 12)
+#m1, m2, and m3 are instance variables in this example
+#school is a static variable
+
+print(s1.m1, s1.m2, s1.m3, s1.school)
+
+# we will create a method above to find the average of values
+# we will then call that method on student 1
+print(s1.average())
+
+
+
+
+
+
+
+
+
+
+
+
 
 
