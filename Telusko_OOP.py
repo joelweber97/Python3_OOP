@@ -131,21 +131,51 @@ print(car2.company, car2.mileage, car2.wheels)
     '''
 
 class Student:
-    #static variable
+    #static (class) variable
     school = 'Telusko'
 
-    #instance variable
+    #instance variable.
     def __init__(self, m1, m2, m3):
         self.m1 = m1
         self.m2 = m2
         self.m3 = m3
 
-
+    #create an instance method.
+    # we can tell it's an instance method because we pass in self.
     def average(self):
         return (self.m1 + self.m2 + self.m3)/3
 
 
-s1 = Student(34, 67, 32)
+    #2 types of instance methods - accessor methods and mutator methods.
+    #accessors just fetch the value of the instance variable
+    #mutators modify the instance variable
+    
+    #get methods are accessor instance methods
+    def get_m1(self):
+        return self.m1
+    #set methods are mutator instance methods
+    def set_m1(self, value):
+        self.m1 = value
+
+
+    #class methods - in this case school is a class variable. We need class methods to work with these variables
+    #to define a class method we need to use the @classmethod decorator
+    @classmethod
+    def getSchool(cls): #cls notates class
+        return(cls.school)
+
+    #static methods
+    #when you're not interested in class variables or instance variables we can use a static method
+    #for instance, if you want to print the info about the class.
+    #leave the parens empty if you don't want to it be related with a class or an instance.
+    #use the @staticmethod decorator
+    @staticmethod
+    def info():
+        print("this is Student class... in abc module")
+
+
+
+s1 = Student(34, 47, 32)
 s2 = Student(89, 32, 12)
 #m1, m2, and m3 are instance variables in this example
 #school is a static variable
@@ -155,17 +185,31 @@ print(s1.m1, s1.m2, s1.m3, s1.school)
 # we will create a method above to find the average of values
 # we will then call that method on student 1
 print(s1.average())
+print(s2.average())
+
+
+#here we will call the get accessor instance method get_m1
+print(s1.get_m1())
+print(s2.get_m1())
+
+#we will also call the set mutator instance method
+s1.set_m1(33)
+s2.set_m1(10)
+
+print(s1.m1)
+print(s2.m1)
+
+
+#now we will call the class method on the student class.
+#to do this we don't use the instances, we put the method onto the entire class
+#remember to use the @classmethod decorator when defining the class method.
+print(Student.getSchool())
 
 
 
+#now lets call the static info method
+#make sure to inclue the @staticmethod decorator when creating it
 
-
-
-
-
-
-
-
-
+Student.info()
 
 
