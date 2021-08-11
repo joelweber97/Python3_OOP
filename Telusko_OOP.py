@@ -213,3 +213,42 @@ print(Student.getSchool())
 Student.info()
 
 
+#inner class
+#when you know a class will only be used with another class.
+#the laptop class will only be called on the student class so you
+#don't have to create 2 separate outer classes.
+class Student:
+    def __init__(self, name, rollno):
+        self.name = name
+        self.rollno = rollno
+        self.lap = self.Laptop()
+
+    def show(self):
+        print(self.name, self.rollno)
+
+
+    # we will create another class for laptop within the student class
+    #since each student will have their own laptop.
+    class Laptop:
+        def __init__(self):
+            self.brand = 'hp'
+            self.cpu = 'i5'
+            self.ram = 8
+
+
+
+
+s1 = Student('Navin', 2)
+s2 = Student('Jenny', 3)
+
+
+print(s1.name, s1.rollno)
+s1.show()
+#need to call it this way because the lap class is within the student class
+s1.lap.brand
+
+
+lap = s1.lap
+lap2 = s2.lap
+
+print(lap, lap2)
