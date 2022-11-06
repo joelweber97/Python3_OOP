@@ -263,32 +263,78 @@ print(Student.get_school_name())
 Student.info()
 '''
 
+'''
+#########
+# Inner Class in Python
+#########
+#creating a class within a class?
+#lets say we have a student clas with all the variables and methods that students have
+#but the we want info about the laptop
+#in this case the laptop is it's own class because the latptop can have its own methods and variables
+#only create an inner class when you know that class will only be used inside of another class
+#for instance, if we know that Laptop will only be used by Student class
+#we can add the laptop show method into the student show method which will
+#print the student info and the laptop info
+
+class Student:
+
+    def __init__(self, name, number):
+        self.name = name
+        self.number = number
+        self.lap = self.Laptop()
+    
+    def show(self):
+        print(self.name, self.number)
+        self.lap.show()
+
+    class Laptop: # here we created the inner class of laptop
+        #the laptop class is initialized in the __init__ method of the Student class
+        def __init__(self):
+            self.brand = 'hp'
+            self.cpu = 'i5'
+            self.ram = 16
+        def show(self): #we creted another show method but this only applies to the laptop class
+            print(self.brand, self.cpu, self.ram)
+
+s1 = Student("Joel", 2)
+s2 = Student("Jenny", 3)
+
+print(s1.name, s1.number)
+#the above result is the same as creating a show() instance variable 
+#that prints out the name and number (can be seen above and below)
+s1.show()
+
+
+#now we will call the brand of the inner Laptop class of the student class
+print(s1.lap.brand)
+lap1 = s1.lap
+print(lap1.brand)
+
+
+lap2 = s2.lap
+print(lap2.ram)
+
+# we can see each lap is different by printing the ids of each
+print(id(lap1), id(lap2))
 
 
 
+lap3 = Student.Laptop()
+print(lap3.brand)
 
 
+s1.show() #this prints the the output from the show method of the student class
+    
+    #def show(self):
+    #    print(self.name, self.number)
+    #    self.lap.show()
+
+'''
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#######
+# Inheritance in Python
+#######
 
 
 
