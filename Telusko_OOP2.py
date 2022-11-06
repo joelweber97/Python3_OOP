@@ -185,30 +185,83 @@ print(c2.mileage, c2.make, c2.wheels)
 
 '''
 
+'''
+########
+# Types of methods in Python
+########
+
+# 3 types of methods: instance, class, and static
+
+#instance methods are run directly on objects
+#Within instance methods there are accessor methods and mutator methods
+#accessor methods access the data
+#mutator methods modify the data
+
+#instance variables use the self keyword while 
+#class methods use the cls keyword  and the @classmethod decorator
+ 
+class Student:
+
+    school = 'Telusko' #setting a class variable that applies to all objects
+
+    def __init__(self, m1, m2, m3):
+        self.m1 = m1 # 3 instance variables that get defined when creating the object
+        self.m2 = m2
+        self.m3 = m3
 
 
+    def avg(self): #instance method because we pass in self which applies to the object itself
+        return self.m1 + self.m2 + self.m3 / 3
+
+    #accessor instance method that prints the value of m1
+    def get_m1(self):
+        return self.m1
 
 
+    #mutator instance method that will change the value of m1
+    def set_m1(self, m1_changed):
+        self.m1 = m1_changed
+
+    @classmethod  #must use decorator for class methods as well
+    def get_school_name(cls): #the cls keyword is indicitive of a class method
+        return cls.school
 
 
+    #now we're going to create a static variable
+    # use these when not concerned about instance or class variables
+    #we have to use a special decorator for static variables, as well
+    @staticmethod
+    def info():
+        print('This is a student class')
+
+s1 = Student(74,22,47) #setting the instance variables during instantiation
+s2 = Student(99,10,55)   
+
+print(s1.school, s1.m1, s1.m2, s1.m3)
+print(s2.school, s2.m1, s2.m2, s2.m3)
+
+print(s1.avg()) #calling the instance method on an a specific object.
+print(s2.avg()) #the avg method will work on every single object created
+
+#calling the accessor instance method get_m1
+print(s1.get_m1())
+print(s2.get_m1())
+
+#using the mutator instance method to change the value of m1 for each
+s1.set_m1(55)
+s2.set_m1(1000)
+#then we will print the values of m1 for each s1 and s2
+print(s1.get_m1())
+print(s2.get_m1()) #the values for m1 in each of the instances have been changed
+
+#now that we have the clas method school info we can print the school in 2 different
+#ways, either using the school class variable or using the school_info class method
+print(Student.school)
+print(Student.get_school_name())
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Student.info()
+'''
 
 
 
