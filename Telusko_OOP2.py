@@ -69,12 +69,136 @@ comp2 = Computer("r3", 8)
 
 comp1.config() #returns i5, 16
 comp2.config() #returns r3, 8
-
 '''
 
+'''
 ######
 #Constructor, self, and comparing objects in pythong
 ######
+
+class Computer:
+    
+    def __init__(self):
+        self.name = 'Joel'
+        self.age = 34
+        #when creating the constructor each of the objects will have the
+        #same valuefor name and age. 
+        #we can, however, change the values
+
+
+    def update(self):
+        self.age=30
+
+    def compare(self, other):
+        if self.age == other.age:
+            return True
+        else:
+            return False
+
+
+c1 = Computer() #this is a constructor
+print(id(c1)) #print the address of c1
+print(c1.age)
+
+c2 = Computer() #this is a constructor
+print(id(c2)) #the memory space is different than c1
+print(c2.age)
+#the size of an object depends on the number of variables
+#the constructor is what allocates the size to the object.
+#as mentioned each of the objects has the same value for name and age
+
+#here we can change the value while constructing the data
+c3 = Computer()
+c3.age = 35
+print(c3.age)
+
+c1.age = 88
+print(c1.age)
+
+#now we can call the update method on a particular object
+c1.update()
+print(c1.age)
+
+
+
+#now we create another function to compare the age of self (aka c1) 
+#with a other object
+if c1.compare(c2):
+    print('they are same')
+
+c1.age = 20
+c2.age = 20
+
+if c1.compare(c2):
+    print('they are same')
+
+
+
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
