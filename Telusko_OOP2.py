@@ -131,33 +131,59 @@ c2.age = 20
 
 if c1.compare(c2):
     print('they are same')
-
-
-
-
 '''
 
 
+'''
+########
+#Types of variables in Python
+#######
+
+#instance variable:
+    #as the object changes the value of the variable also changes
+    #defined inside innit
+
+#class variable:
+    #variables that are common for all the objects
+    #for instance, the number of wheels for all cars is 4
+    #defined outside of innit
 
 
+class Car:
+
+    wheels = 4
+
+    def __init__(self):
+        self.mileage = 10 #instance variable
+        self.make = 'BMW' #isntance variable
 
 
+c1 = Car()
+c2 = Car()
+
+print(c1.mileage, c1.make)
+print(c2.mileage, c2.make)
+
+c1.mileage = 8
+print(c1.mileage, c1.make)
+print(c2.mileage, c2.make)
 
 
+print(c1.mileage, c1.make, c1.wheels) #printing the class varialbe for each instance
+print(c2.mileage, c2.make, c2.wheels)
 
 
+#we can also print the wheels variable for the class, rather than a specific object
+print(Car.wheels)
 
 
+#we can change the class variable by using the class name
+Car.wheels = 5
+#now the wheels variable for all instances have changed as well.
+print(c1.mileage, c1.make, c1.wheels)
+print(c2.mileage, c2.make, c2.wheels)
 
-
-
-
-
-
-
-
-
-
+'''
 
 
 
