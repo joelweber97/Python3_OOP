@@ -336,16 +336,82 @@ s1.show() #this prints the the output from the show method of the student class
 # Inheritance in Python
 #######
 
+#whatever belongs to your parent also belongs to you
+#the childs belongings don't belong to the parents though.
+
+#there are 3 types of inheritance
+#single inheritance
+#multi-level inheritance
+#and multiple inheritance
+
+class A:
+    def feature1(self):
+        print('feature 1 working')
+    
+    def feature2(self):
+        print('feature 2 is working')
 
 
 
+class B(A):   #class B is inheriting all the features of class A
+    def feature3(self):
+        print('feature 3 working')
+    
+    def feature4(self):
+        print('feature 4 is working')
+
+class D:
+    def feature6(self):
+        print('feature 6')
+
+class C(B):
+    def feature5(self):
+        print('feature 5 works')
+
+class E(A, D):  #here E is inheriting from A and D
+    def feature7(self):
+        print('feature 7')
+
+class F(B, D): #here F is inheriting from D and B (which also inherits from A)
+    def feature8(self):
+        print('feautre 8')
+
+a1 = A()
+print('A')
+a1.feature1()
+a1.feature2()
+print("B")
+b1 = B()
+b1.feature3()
+b1.feature4()
+
+#what if we want to get the methods of class A to work with class B?
+#we can make B a child class of A using the class B(A): syntax
+
+b1.feature1()
+
+c1 = C()
+print('C')
+c1.feature1()
+c1.feature2() 
+c1.feature3() 
+c1.feature4() 
+c1.feature5()
+
+#as you can see the child class can inherits all the things
+#from parent, grandparent, great grandparent, etc.
+
+# we can also inheritsfrom multiple classes that arent' related
+#we can see that class D isn't related 
+
+e1 = E()
+e1.feature1()
+e1.feature2()
+e1.feature6()
+e1.feature7()
 
 
-
-
-
-
-
-
-
+f1 = F()
+#f1.feature 1,2,3,4,6,8 are available
+#since F inherits from D and B which inherits from A
 
