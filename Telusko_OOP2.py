@@ -331,7 +331,7 @@ s1.show() #this prints the the output from the show method of the student class
 
 '''
 
-
+'''
 #######
 # Inheritance in Python
 #######
@@ -414,4 +414,11 @@ e1.feature7()
 f1 = F()
 #f1.feature 1,2,3,4,6,8 are available
 #since F inherits from D and B which inherits from A
+
+'''
+
+
+########
+#Constructor in inheritance
+########
 
