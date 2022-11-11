@@ -418,7 +418,205 @@ f1 = F()
 '''
 
 
+'''
+
 ########
 #Constructor in inheritance
+#Method Resolution Order
 ########
+
+class A:
+
+    def __init__(self):
+        print('in A innit')
+
+    def feature1(self):
+        print('feature1 working')
+    def feature2(self):
+        print('feature2 working')
+
+class B(A): #in total class B has 4 methods (aka 4 features)
+    def feature3(self):
+        print('feature3 working')
+    def feature4(self):
+        print('feature4 working')
+
+
+a1 = A() #you can only access features of class A here
+a2 = B() #you can access features of class A and class B here
+#if class B doesnt have it's own constructor the __Init__ constructor
+#will be called when class B is instantiated, as you can see above
+
+class C:
+
+    def __init__(self):
+        
+        print('in C innit')
+
+    def feature1(self):
+        print('feature1 working')
+    def feature2(self):
+        print('feature2 working')
+
+class D(C): #in total class D has 4 methods (aka 4 features)
+
+    def __init__(self):
+        
+        print('in innit D') 
+    def feature3(self):
+        print('feature3 working')
+    def feature4(self):
+        print('feature4 working')
+
+a3 = C()
+a4 = D() #when clas D has an innit it will overwrite the innit from its parent clas
+#this is different from clas B which had no innit so it used class A's innit
+
+#when there's no innit in the subclass the subclass will use the innit from the super clas
+
+
+class E(C):
+    def __init__(self):
+        super().__init__()
+        print('in E innit')
+
+#what if you want to call the innit from C and D?
+#we use the super().__init__() call to get the innit from the superclass, as well
+#now you can see below that 
+
+
+a7 = E() # we can see that C innit and E innit is both printed
+
+
+#now we'll look at multiple inheritance example
+
+class F:
+    def __init__(self):
+    
+        print('in innit F') 
+
+    def feature1(self):
+        print('feature 1F working')
+    def feature2(self):
+        print('feature2 working')
+
+class G:
+    def __init__(self):
+        
+        print('in innit G') 
+    def feature1(self):
+        print('feature 1G working')
+    def feature4(self):
+        print('feature4 working')
+
+class H(F,G):
+
+    def __init__(self):
+        super().__init__()
+        print('in innit H') 
+
+    def feat(self):
+        super().feature2() #using the super method to call feature 2 from class F
+
+a8 = H() # at first it's only calling H's innit
+#when when we add super.__init__(self) it calls innit from F and H and ignores G
+#this relates to the method resolution order (MRO)
+#1) tries to find the init of itself
+#2)when callling super it always moves from left to right (top to bottom?)
+#which is why the super() of H called the innit from F but not G
+
+
+#the same can be done with methods
+#since F and G both have a method with the same name when we call
+#feature1 from H it will always call the top method... in this case from class F
+a8.feature1() 
+
+#can also use super method to call methods from a different class
+
+a8.feat()
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
