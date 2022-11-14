@@ -539,59 +539,167 @@ a8.feat()
 
 
 
+########
+# Intro to Polymorphism
+########
+
+#many forms
+#behaving differently under different scenarios.
+
+#important when it comes to loose coupling, dependency injection, and interfacing
+#which we will talk about later.
+
+#4 ways of implementing polymorphism
+#1. Duck Typing
+#2. Operator Overloading
+#3. Method Overloading
+#4. Method Overriding
+
+
+
+"""
+
+##########
+# Duck Typing
+##########
+
+#duck test - if it looks like a duck, quacks like a duck, and swims like a duck
+#its a duck
+
+x = 5
+
+x = "joel"
+
+#each of the two variables have their own memory space and the x
+#is the name attached to that space. so the x doesn't have a type....
+#we're actually returning the type of 5 or the type of 'joel' instead
+
+#the variable name is just a name to specific memory space
+
+class PyCharm:
+    def execute(self):
+        print('compiling')
+        print('running')
+
+
+class MyEditor:
+    def execute(self):
+        print('spellcheck')
+        print('convention check')
+        print('compiling')
+        print('running')
+
+class Laptop:
+
+    def code(self, ide):
+        ide.execute()
+
+
+ide = PyCharm()
+ide = MyEditor()
+lap1 = Laptop()
+lap1.code(ide)
+
+#as long as PyCharm() and MyEditor() classes both have the execute
+#method they can both be called in the Laptop().code method
+
+"""
+
+"""
+
+#########
+#Operator Overloading
+#########
+
+#in python we can add integers, an integer and float, 2 strings
+#but not an int and string or float and string
+
+a = 5
+b = "world"
+c = 6
+#print(a+b) #throws error
+print(a + c)
+
+#behind the scenese the code is calling __add__(a,c) onto the int class
+print(int.__add__(a,c))
+
+#if we add 2 strings together it calls the __add__(a,b) method on the str clas
+print(str.__add__('test', 'test'))
+
+#The + operator calls the __add__() method
+#the - operator calls the __sub__() method
+#the * operator calls the __mul__() method
+#the / operator calls the __div__() method
 
 
 
 
+class Student:
+
+    def __init__(self, m1, m2):
+        self.m1 = m1
+        self.m2 = m2
+    
+    def __add__(self, other):
+        m1 = self.m1 + other.m1
+        m2 = self.m2 + other.m2
+        s3 = Student(m1,m2)
+        return s3
+
+    def __gt__(self, other):
+        r1 = self.m1 + self.m2
+        r2 = other.m1 + other.m2
+        if r1 > r2:
+            return True
+        else:
+            return False
+
+
+    def __str__(self):
+        return "{} {}".format(self.m1, self.m2)
+
+s1 = Student(58, 69)
+s2 = Student(60,65)
+
+#s3 = s1 + s2    
+# this throws an error because we cannot add 2 class objects
+# because the student class doesn't have an add method
+# now we added a __add__ method which calls Student.__add(s1,s2)
+s3 = s1+s2
+print(s3.m1)
+
+#so if we want to use an operator between 2 classes we need to overload
+#the operator becausethe student class doesn't know what that + means
+
+
+# now lets see if 1 object is greater in size than another object
+if s1 > s2:
+    print('s1 wins')
+else:
+    print('s2 wins')
+
+#this trhwos an error unless we overload and define a greater than method above
 
 
 
 
+a = 9
+print(a)
+
+#when we print a varaible it's actually printing the value
+#instead of the memory location that gets printed when we print an object
+#that's because its actually running print(a.__str__())
+#if we wanna actually print out the values of the object
+#we need to override the __str__() method
+print(s1.__str__()) #now it prints the values rather than the address.
+print(s2)
 
 
+"""
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+##########
+#Method overloading and Method overriding
+###########
 
 
 
