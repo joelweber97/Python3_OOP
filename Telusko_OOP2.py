@@ -702,8 +702,51 @@ print(s2)
 ###########
 
 
+#method overloading -> in a class if you have 2 methods with the same name
+#but different parameters 
+
+'''
+class Student"
+    def average(a,b)
+
+    def average(a,b,c)
+    
+'''
+# in python we don't have method overloading so we cannot create
+# 2 methods with the same name
 
 
+class Student:
+    def __init__(self, m1, m2):
+        self.m1 = m1
+        self.m2 = m2
+
+    # if we set each param to None we don't have to use all 3 when calling
+    #the method. You can see below that we're only passing 2 values into 
+    #the sum method
+    def sum(self, a= None, b = None, c = None): 
+
+        s = 0
+
+        if a!=None and b!=None and c!=None:
+            s = a+b+c
+        elif a!=None and b!=None:
+            s = a+b
+        else:
+            s = a
+        return s
+
+s1 = Student(58,69)
+
+print(s1.sum(5,9))
+print(s1.sum(23,1,45))
+print(s1.sum(23))
+
+
+
+
+
+#method overriding -> 2 classes have a method with the same name which get inherited
 
 
 
