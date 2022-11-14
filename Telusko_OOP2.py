@@ -748,15 +748,26 @@ print(s1.sum(23))
 
 #method overriding -> 2 classes have a method with the same name which get inherited
 
+class A:
+    def show(self):
+        print('in A show')
 
 
+class B(A):
+    pass
+
+a1 = A()
+a1.show()
 
 
+b1 = B()
+b1.show()
 
+#if the method we call deosn't exist in B it will inherit the method
+#from it's parent class (A, in this case)
 
-
-
-
+#if you create a show() method in B the if we instantiate B and call show
+#on it it will print whatever is in B.show()
 
 
 
